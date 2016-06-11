@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+xmlns:tns="http://tempuri.org/"
+xmlns:s1="http://casino.game.api.wwg"
+xmlns:s="http://www.w3.org/2001/XMLSchema"
+xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+targetNamespace="http://tempuri.org/"
+xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified"
+    targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://casino.game.api.wwg" />
+      <s:element name="BuyBingoCards">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request"
+            type="s1:BuyBingoCardsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuyBingoCardsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1"
+            name="BuyBingoCardsResult"
+            type="s1:BuyBingoCardsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request"
+            type="s1:getBalanceRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1"
+            name="GetBalanceResult" type="s1:getBalanceResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BetRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request"
+            type="s1:getBetRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BetRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1"
+            name="BetRequestResult"
+            type="s1:getBetRequestResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BetResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request"
+            type="s1:getBetResultRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BetResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1"
+            name="BetResultResult"
+            type="s1:getBetResultResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1"
+            name="GetVersionResult" type="s1:getVersionResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBulkBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request"
+            type="s1:getBulkBalanceRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBulkBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1"
+            name="GetBulkBalanceResult"
+            type="s1:getBulkBalanceResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessBingoResults">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request"
+            type="s1:ProcessBingoResultsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessBingoResultsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1"
+            name="ProcessBingoResults" nillable="true"
+            type="s1:ProcessBingoResultsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuyPreorderedCards">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request"
+            type="s1:BuyPreorderedCardsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuyPreorderedCardsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1"
+            name="BuyPreorderedCardsResult"
+            type="s1:BuyPreorderedCardsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified"
+    targetNamespace="http://casino.game.api.wwg">
+      <s:complexType name="BuyBingoCardsRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="playerID"
+          nillable="true" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="roomID"
+          nillable="true" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="roundID"
+          nillable="true" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="amount"
+          nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="cardsNumber"
+          type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="packSize"
+          type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BuyBingoCardsResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="balance"
+          type="s1:Balance" />
+          <s:element minOccurs="0" maxOccurs="1" name="error"
+          type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description"
+          type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1"
+          name="proposedCardsNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Balance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="cash"
+          type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="bonus"
+          type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="getBalanceRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="playerID"
+          type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="getBalanceResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="balance"
+          type="s1:Balance" />
+          <s:element minOccurs="0" maxOccurs="1" name="error"
+          type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description"
+          type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="getBetRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="playerID"
+          type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1"
+          name="playSessionID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="gameID"
+          type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="betAmount"
+          type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="getBetRequestResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="balance"
+          type="s1:Balance" />
+          <s:element minOccurs="0" maxOccurs="1" name="error"
+          type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description"
+          type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="getBetResultRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="playerID"
+          type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1"
+          name="playSessionID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="winAmount"
+          type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="getBetResultResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="balance"
+          type="s1:Balance" />
+          <s:element minOccurs="0" maxOccurs="1" name="error"
+          type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description"
+          type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="getVersionResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="version"
+          type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="getBulkBalanceRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded"
+          name="playerID" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="getBulkBalanceResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded"
+          name="PlayerList">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="1" maxOccurs="1"
+                name="playerID" type="s:long" />
+                <s:element minOccurs="0" maxOccurs="1"
+                name="balance" type="s1:Balance" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="error"
+          type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description"
+          type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProcessBingoResultsRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="resultType"
+          nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="roundID"
+          nillable="true" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="roomID"
+          nillable="true" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="unbounded"
+          name="gameResultList" nillable="true"
+          type="s1:gameResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="gameResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="playerID"
+          nillable="true" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="amount"
+          nillable="true" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProcessBingoResultsResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1"
+          name="BingoResultList" type="s1:ArrayOfBingoResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBingoResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded"
+          name="BingoResult" type="s1:BingoResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BingoResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="playerID"
+          type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="balance"
+          type="s1:Balance" />
+          <s:element minOccurs="0" maxOccurs="1" name="error"
+          type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description"
+          type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BuyPreorderedCardsRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="roomID"
+          type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="roundID"
+          type="s:long" />
+          <s:element minOccurs="0" maxOccurs="unbounded"
+          name="PreorderedCards">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="1" maxOccurs="1"
+                name="playerID" type="s:long" />
+                <s:element minOccurs="1" maxOccurs="1"
+                name="purchaseID" type="s:long" />
+                <s:element minOccurs="1" maxOccurs="1"
+                name="amount" type="s:double" />
+                <s:element minOccurs="1" maxOccurs="1"
+                name="cardCost" type="s:double" />
+                <s:element minOccurs="1" maxOccurs="1"
+                name="cardsNumber" type="s:int" />
+                <s:element minOccurs="1" maxOccurs="1"
+                name="packSize" type="s:int" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BuyPreorderedCardsResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded"
+          name="PurchaseResults">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="1" maxOccurs="1"
+                name="playerID" type="s:long" />
+                <s:element minOccurs="1" maxOccurs="1"
+                name="purchaseID" type="s:long" />
+                <s:element minOccurs="1" maxOccurs="1"
+                name="boughtCardsNumber" type="s:int" />
+                <s:element minOccurs="0" maxOccurs="1"
+                name="balance" type="s1:Balance" />
+                <s:element minOccurs="1" maxOccurs="1" name="error"
+                nillable="true" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1"
+                name="description" nillable="true"
+                type="s:string" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="BuyBingoCardsSoapIn">
+    <wsdl:part name="parameters" element="tns:BuyBingoCards" />
+  </wsdl:message>
+  <wsdl:message name="BuyBingoCardsSoapOut">
+    <wsdl:part name="parameters"
+    element="tns:BuyBingoCardsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBalance" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceSoapOut">
+    <wsdl:part name="parameters"
+    element="tns:GetBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="BetRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:BetRequest" />
+  </wsdl:message>
+  <wsdl:message name="BetRequestSoapOut">
+    <wsdl:part name="parameters"
+    element="tns:BetRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="BetResultSoapIn">
+    <wsdl:part name="parameters" element="tns:BetResult" />
+  </wsdl:message>
+  <wsdl:message name="BetResultSoapOut">
+    <wsdl:part name="parameters" element="tns:BetResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapOut">
+    <wsdl:part name="parameters"
+    element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBulkBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBulkBalance" />
+  </wsdl:message>
+  <wsdl:message name="GetBulkBalanceSoapOut">
+    <wsdl:part name="parameters"
+    element="tns:GetBulkBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcessBingoResultsSoapIn">
+    <wsdl:part name="parameters"
+    element="tns:ProcessBingoResults" />
+  </wsdl:message>
+  <wsdl:message name="ProcessBingoResultsSoapOut">
+    <wsdl:part name="parameters"
+    element="tns:ProcessBingoResultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuyPreorderedCardsSoapIn">
+    <wsdl:part name="parameters"
+    element="tns:BuyPreorderedCards" />
+  </wsdl:message>
+  <wsdl:message name="BuyPreorderedCardsSoapOut">
+    <wsdl:part name="parameters"
+    element="tns:BuyPreorderedCardsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WWGAPIFaceImplSoap">
+    <wsdl:operation name="BuyBingoCards">
+      <wsdl:input message="tns:BuyBingoCardsSoapIn" />
+      <wsdl:output message="tns:BuyBingoCardsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <wsdl:input message="tns:GetBalanceSoapIn" />
+      <wsdl:output message="tns:GetBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BetRequest">
+      <wsdl:input message="tns:BetRequestSoapIn" />
+      <wsdl:output message="tns:BetRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BetResult">
+      <wsdl:input message="tns:BetResultSoapIn" />
+      <wsdl:output message="tns:BetResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <wsdl:input message="tns:GetVersionSoapIn" />
+      <wsdl:output message="tns:GetVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBulkBalance">
+      <wsdl:input message="tns:GetBulkBalanceSoapIn" />
+      <wsdl:output message="tns:GetBulkBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessBingoResults">
+      <wsdl:input message="tns:ProcessBingoResultsSoapIn" />
+      <wsdl:output message="tns:ProcessBingoResultsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuyPreorderedCards">
+      <wsdl:input message="tns:BuyPreorderedCardsSoapIn" />
+      <wsdl:output message="tns:BuyPreorderedCardsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WWGAPIFaceImplSoap"
+  type="tns:WWGAPIFaceImplSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BuyBingoCards">
+      <soap:operation soapAction="http://tempuri.org/BuyBingoCards"
+      style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <soap:operation soapAction="http://tempuri.org/GetBalance"
+      style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BetRequest">
+      <soap:operation soapAction="http://tempuri.org/BetRequest"
+      style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BetResult">
+      <soap:operation soapAction="http://tempuri.org/BetResult"
+      style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://tempuri.org/GetVersion"
+      style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBulkBalance">
+      <soap:operation soapAction="http://tempuri.org/GetBulkBalance"
+      style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessBingoResults">
+      <soap:operation soapAction="http://tempuri.org/ProcessBingoResults"
+      style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuyPreorderedCards">
+      <soap:operation soapAction="http://tempuri.org/BuyPreorderedCards"
+      style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WWGAPIFaceImplSoap12"
+  type="tns:WWGAPIFaceImplSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BuyBingoCards">
+      <soap12:operation soapAction="http://tempuri.org/BuyBingoCards"
+      style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <soap12:operation soapAction="http://tempuri.org/GetBalance"
+      style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BetRequest">
+      <soap12:operation soapAction="http://tempuri.org/BetRequest"
+      style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BetResult">
+      <soap12:operation soapAction="http://tempuri.org/BetResult"
+      style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap12:operation soapAction="http://tempuri.org/GetVersion"
+      style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBulkBalance">
+      <soap12:operation soapAction="http://tempuri.org/GetBulkBalance"
+      style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessBingoResults">
+      <soap12:operation soapAction="http://tempuri.org/ProcessBingoResults"
+      style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuyPreorderedCards">
+      <soap12:operation soapAction="http://tempuri.org/BuyPreorderedCards"
+      style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WWGAPIFaceImpl">
+    <wsdl:port name="WWGAPIFaceImplSoap"
+    binding="tns:WWGAPIFaceImplSoap">
+    <soap:address location="https://www.unigamingcasino.com/api/topgame/" />
+    </wsdl:port>
+    <wsdl:port name="WWGAPIFaceImplSoap12"
+    binding="tns:WWGAPIFaceImplSoap12">
+      <soap12:address location="" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
