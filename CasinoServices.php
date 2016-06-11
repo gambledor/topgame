@@ -127,7 +127,7 @@ class CasinoServices
         $request->secureLogin    = SECURE_LOGIN;
         $request->securePassword = SECURE_PASSWORD;
         $request->nickname       = $registration['username'];
-        $request->email          = $registration['username'].'@unigamingcasino.com';
+        $request->email          = $registration['username'].'@casino.com';
         $request->currency       = $anagraphic['currency'];
         $request->language       = $anagraphic['lang'];
         $request->firstName      = '';
