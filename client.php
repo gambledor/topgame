@@ -6,14 +6,14 @@ $options = array(
     'exception' => true,
     'soap_version'=> SOAP_1_1,
     'uri' => 'http://tempuri.org/',
-    'location' => 'http://www.ungmcasino.com/integrations/topgame/wsdl/topgame.wsdl',
+    'location' => 'http://www.casino.com/integrations/topgame/wsdl/topgame.wsdl',
     'style' => SOAP_DOCUMENT,
     'use'   => SOAP_LITERAL
 );
 
 try {
     //$client = new SOAPClient(null, $options);
-    $client = new SOAPClient('http://www.ungmcasino.com/integrations/topgame/wsdl/topgame.wsdl');
+    $client = new SOAPClient('http://www.casino.com/integrations/topgame/wsdl/topgame.wsdl');
     var_dump($client->__getFunctions());
 
     $request = new stdClass();
