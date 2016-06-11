@@ -1,7 +1,7 @@
 <?php
 
-define('SECURE_LOGIN', 'ugnmcasino_live');
-define('SECURE_PASSWORD', '00713c6674dbea173f16a92221d4edaf');
+define('SECURE_LOGIN', '');
+define('SECURE_PASSWORD', '');
 
 define('WSDL_URI', 'http://api.game-service.biz/cgAPI/service/cgCasinoServiceDefinition.wsdl');
 define('WS_SERVICE_URL', 'http://api.game-service.biz/cgAPI/service');
